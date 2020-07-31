@@ -1,7 +1,10 @@
 import {CreateEvaluationDto} from '../../src/evaluations/dto/create-evaluation.dto';
 import {UpdateEvaluationDto} from '../../src/evaluations/dto/update-evaluation.dto';
 import {EvaluationDto} from '../../src/evaluations/dto/evaluation.dto';
-import {EVALUATION_TAG_DTO_ARRAY, EVALUATION_TAG_ARRAY} from '../../test/constants/evaluation-tags-test.contant';
+import {
+  EVALUATION_TAG_DTO_ARRAY,
+  EVALUATION_TAG_ARRAY
+} from '../../test/constants/evaluation-tags-test.contant';
 import {Evaluation} from '../../src/evaluations/evaluation.model';
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 
@@ -26,6 +29,18 @@ export const EVALUATION_CREATE: CreateEvaluationDto = {
 };
 
 // @ts-ignore
+export const EVALUATION_CREATE_WITH_MISSING_VERSION: CreateEvaluationDto = {
+  data: {},
+  evaluationTags: EVALUATION_TAG_DTO_ARRAY
+};
+
+// @ts-ignore
+export const EVALUATION_CREATE_WITH_MISSING_DATA: CreateEvaluationDto = {
+  version: '1.0',
+  evaluationTags: EVALUATION_TAG_DTO_ARRAY
+};
+
+// @ts-ignore
 export const EVALUATION_CREATE_2: CreateEvaluationDto = {
   data: {},
   version: '2.0',
@@ -39,7 +54,7 @@ export const EVALUATION_DTO: EvaluationDto = {
   data: {},
   evaluationTags: EVALUATION_TAG_DTO_ARRAY,
   createdAt: new Date(),
-  updatedAt: new Date(),
+  updatedAt: new Date()
 };
 
 // @ts-ignore
@@ -49,11 +64,14 @@ export const EVALUATION_DTO_2: EvaluationDto = {
   data: {},
   evaluationTags: EVALUATION_TAG_DTO_ARRAY,
   createdAt: new Date(),
-  updatedAt: new Date(),
+  updatedAt: new Date()
 };
 
 // @ts-ignore
-export const EVALUATION_DTO_ARRAY: EvaluationDto[] = [EVALUATION_DTO, EVALUATION_DTO_2];
+export const EVALUATION_DTO_ARRAY: EvaluationDto[] = [
+  EVALUATION_DTO,
+  EVALUATION_DTO_2
+];
 
 // @ts-ignore
 export const EVALUATION_UPDATE: UpdateEvaluationDto = {

@@ -50,9 +50,10 @@ export const UPDATE_EVALUATION_TAG_DTO_MISSING_VALUE: UpdateEvaluationTagDto = {
   key: 'new key string'
 };
 
-export const EVALUATION_TAG_DTO_ARRAY: EvaluationTagDto[] = [EVALUATION_TAG_DTO];
+export const EVALUATION_TAG_DTO_ARRAY: EvaluationTagDto[] = [
+  EVALUATION_TAG_DTO
+];
 
 export const EVALUATION_TAG_ARRAY: EvaluationTag[] = [EVALUATION_TAG_1];
-
 
 /* eslint-enable @typescript-eslint/ban-ts-ignore */
