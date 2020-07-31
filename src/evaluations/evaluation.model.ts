@@ -7,8 +7,10 @@ import {
   PrimaryKey,
   AllowNull,
   DataType,
-  AutoIncrement
+  AutoIncrement,
+  HasMany
 } from 'sequelize-typescript';
+import {EvaluationTag} from '../evaluation-tags/evaluation-tag.model';
 
 @Table
 export class Evaluation extends Model<Evaluation> {
@@ -18,8 +20,13 @@ export class Evaluation extends Model<Evaluation> {
   @Column(DataType.BIGINT)
   id: number;
 
+  @AllowNull(false)
   @Column
   version: string;
+
+  @AllowNull(false)
+  @Column(DataType.JSON)
+  data: Record<string, any>;
 
   @CreatedAt
   @AllowNull(false)
@@ -30,4 +37,7 @@ export class Evaluation extends Model<Evaluation> {
   @AllowNull(false)
   @Column
   updatedAt: Date;
+
+  @HasMany(() => EvaluationTag)
+  evaluationTags: EvaluationTag[];
 }
