@@ -22,7 +22,14 @@ export const TEST_EVALUATION: Evaluation = {
 export const EVALUATION_CREATE: CreateEvaluationDto = {
   data: {},
   version: '1.0',
-  evaluationTags: []
+  evaluationTags: EVALUATION_TAG_DTO_ARRAY
+};
+
+// @ts-ignore
+export const EVALUATION_CREATE_2: CreateEvaluationDto = {
+  data: {},
+  version: '2.0',
+  evaluationTags: EVALUATION_TAG_DTO_ARRAY
 };
 
 // @ts-ignore
@@ -34,6 +41,19 @@ export const EVALUATION_DTO: EvaluationDto = {
   createdAt: new Date(),
   updatedAt: new Date(),
 };
+
+// @ts-ignore
+export const EVALUATION_DTO_2: EvaluationDto = {
+  id: 2,
+  version: '1.0',
+  data: {},
+  evaluationTags: EVALUATION_TAG_DTO_ARRAY,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
+
+// @ts-ignore
+export const EVALUATION_DTO_ARRAY: EvaluationDto[] = [EVALUATION_DTO, EVALUATION_DTO_2];
 
 // @ts-ignore
 export const EVALUATION_UPDATE: UpdateEvaluationDto = {
