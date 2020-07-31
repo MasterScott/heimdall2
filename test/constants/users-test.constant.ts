@@ -1,7 +1,8 @@
-import {CreateEvaluationDto} from '../../src/evaluations/dto/create-evaluation.dto';
-import {UpdateEvaluationDto} from '../../src/evaluations/dto/update-evaluation.dto';
-import {Evaluation} from '../../src/evaluations/evaluation.model';
-import {EvaluationDto} from '../../src/evaluations/dto/evaluation.dto';
+import {CreateUserDto} from '../../src/users/dto/create-user.dto';
+import {UpdateUserDto} from '../../src/users/dto/update-user.dto';
+import {DeleteUserDto} from '../../src/users/dto/delete-user.dto';
+import {User} from '../../src/users/user.model';
+import {UserDto} from '../../src/users/dto/user.dto';
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 
 export const ID = 7;

@@ -1,9 +1,22 @@
 import {CreateEvaluationDto} from '../../src/evaluations/dto/create-evaluation.dto';
 import {UpdateEvaluationDto} from '../../src/evaluations/dto/update-evaluation.dto';
 import {EvaluationDto} from '../../src/evaluations/dto/evaluation.dto';
-import {EVALUATION_TAG_DTO_ARRAY} from '../../test/constants/evaluation-tags-test.contant';
-// eslint-disable @typescript-eslint/ban-ts-ignore
+import {EVALUATION_TAG_DTO_ARRAY, EVALUATION_TAG_ARRAY} from '../../test/constants/evaluation-tags-test.contant';
+import {Evaluation} from '../../src/evaluations/evaluation.model';
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
 
+// @ts-ignore
+export const ID = 10001;
+
+// @ts-ignore
+export const TEST_EVALUATION: Evaluation = {
+  id: ID,
+  version: '1.0',
+  data: {},
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  evaluationTags: EVALUATION_TAG_ARRAY
+};
 
 // @ts-ignore
 export const EVALUATION_CREATE: CreateEvaluationDto = {
@@ -28,8 +41,5 @@ export const EVALUATION_UPDATE: UpdateEvaluationDto = {
   version: '1.0',
   evaluationTags: []
 };
-
-// @ts-ignore
-export const ID = 10001;
 
 /* eslint-enable @typescript-eslint/ban-ts-ignore */

@@ -16,7 +16,7 @@ import {
   UPDATE_EVALUATION_TAG_DTO_MISSING_VALUE,
   UPDATE_EVALUATION_TAG_DTO_MISSING_KEY
 } from '../../test/constants/evaluation-tags-test.contant';
-import {EVALUATION_1} from '../../test/constants/evaluations-test.constant';
+import {EVALUATION_CREATE} from '../../test/constants/evaluations-test.constant';
 
 describe('EvaluationTagsService', () => {
   let evaluationTagsService: EvaluationTagsService;
@@ -64,7 +64,7 @@ describe('EvaluationTagsService', () => {
 
   describe('Create', () => {
     it('should create a valid EvaluationTag', async () => {
-      const evaluation = await evaluationsService.create(EVALUATION_1);
+      const evaluation = await evaluationsService.create(EVALUATION_CREATE);
       const evaluationTag = await evaluationTagsService.create(
         evaluation.id,
         CREATE_EVALUATION_TAG_DTO
@@ -80,7 +80,7 @@ describe('EvaluationTagsService', () => {
     describe('With missing fields', () => {
       it('should throw an error with key', async () => {
         expect.assertions(1);
-        const evaluation = await evaluationsService.create(EVALUATION_1);
+        const evaluation = await evaluationsService.create(EVALUATION_CREATE);
         await expect(
           evaluationTagsService.create(
             evaluation.id,
@@ -93,7 +93,7 @@ describe('EvaluationTagsService', () => {
 
       it('should throw an error with value', async () => {
         expect.assertions(1);
-        const evaluation = await evaluationsService.create(EVALUATION_1);
+        const evaluation = await evaluationsService.create(EVALUATION_CREATE);
         await expect(
           evaluationTagsService.create(
             evaluation.id,
@@ -108,7 +108,7 @@ describe('EvaluationTagsService', () => {
 
   describe('FindAll', () => {
     it('should find all existing EvaluationTags', async () => {
-      const evaluation = await evaluationsService.create(EVALUATION_1);
+      const evaluation = await evaluationsService.create(EVALUATION_CREATE);
       // No existing tags
       let foundEvaluationTags = await evaluationTagsService.findAll();
       expect(foundEvaluationTags).toBeDefined();
@@ -132,7 +132,7 @@ describe('EvaluationTagsService', () => {
 
   describe('Update', () => {
     it('should update given a valid dto', async () => {
-      const evaluation = await evaluationsService.create(EVALUATION_1);
+      const evaluation = await evaluationsService.create(EVALUATION_CREATE);
       const evaluationTag = await evaluationTagsService.create(
         evaluation.id,
         CREATE_EVALUATION_TAG_DTO
@@ -151,7 +151,7 @@ describe('EvaluationTagsService', () => {
     });
 
     it('should update only key', async () => {
-      const evaluation = await evaluationsService.create(EVALUATION_1);
+      const evaluation = await evaluationsService.create(EVALUATION_CREATE);
       const evaluationTag = await evaluationTagsService.create(
         evaluation.id,
         CREATE_EVALUATION_TAG_DTO
@@ -168,7 +168,7 @@ describe('EvaluationTagsService', () => {
     });
 
     it('should update only value', async () => {
-      const evaluation = await evaluationsService.create(EVALUATION_1);
+      const evaluation = await evaluationsService.create(EVALUATION_CREATE);
       const evaluationTag = await evaluationTagsService.create(
         evaluation.id,
         CREATE_EVALUATION_TAG_DTO
@@ -189,7 +189,7 @@ describe('EvaluationTagsService', () => {
 
   describe('Remove', () => {
     it('should remove an existing tag', async () => {
-      const evaluation = await evaluationsService.create(EVALUATION_1);
+      const evaluation = await evaluationsService.create(EVALUATION_CREATE);
       const evaluationTag = await evaluationTagsService.create(
         evaluation.id,
         CREATE_EVALUATION_TAG_DTO

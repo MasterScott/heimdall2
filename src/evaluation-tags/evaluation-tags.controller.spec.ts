@@ -1,7 +1,7 @@
 import {Test, TestingModule} from '@nestjs/testing';
 import {EvaluationTagsController} from './evaluation-tags.controller';
 import {EvaluationTagsService} from './evaluation-tags.service';
-import {EVALUATION_TAG_DTO} from '../../test/constants/evaluation-tags-test.contant';
+import {EVALUATION_TAG_DTO_ARRAY} from '../../test/constants/evaluation-tags-test.contant';
 
 describe('EvaluationTagsController', () => {
   let evaluationTagsController: EvaluationTagsController;
@@ -14,7 +14,7 @@ describe('EvaluationTagsController', () => {
         {
           provide: EvaluationTagsService,
           useFactory: () => ({
-            findAll: jest.fn(() => [EVALUATION_TAG_DTO])
+            findAll: jest.fn(() => EVALUATION_TAG_DTO_ARRAY)
           })
         }
       ]
@@ -27,7 +27,7 @@ describe('EvaluationTagsController', () => {
   describe('index', () => {
     it('should return EvaluationTags', async () => {
       const evaluationTags = await evaluationTagsController.index();
-      expect(evaluationTags).toContain(EVALUATION_TAG_DTO);
+      expect(evaluationTags).toContain(EVALUATION_TAG_DTO_ARRAY[0]);
     });
   });
 });
