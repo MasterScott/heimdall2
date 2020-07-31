@@ -29,5 +29,7 @@ export const EVALUATION_UPDATE: UpdateEvaluationDto = {
   evaluationTags: []
 };
 
+// @ts-ignore
+export const ID = 10001;
 
 /* eslint-enable @typescript-eslint/ban-ts-ignore */
