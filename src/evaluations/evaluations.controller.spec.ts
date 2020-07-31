@@ -7,7 +7,7 @@ import {EvaluationsController} from './evaluations.controller';
 import {DatabaseService} from '../database/database.service';
 import {DatabaseModule} from '../database/database.module';
 import {EvaluationsService} from '../evaluations/evaluations.service';
-import {EVALUATION_DTO, ID} from '../../test/constants/evaluations-test.constant'
+import {EVALUATION_DTO, ID, EVALUATION_CREATE} from '../../test/constants/evaluations-test.constant'
 // Test suite for the EvaluationsController
 describe('EvaluationsController Unit Tests', () => {
   let evaluationsController: EvaluationsController;
@@ -63,27 +63,14 @@ describe('EvaluationsController Unit Tests', () => {
     });
    });
 
-  // describe('Create function', () => {
-  //   // Tests the create function with valid dto (basic positive test)
-  //   it('should test the create function with valid dto', async () => {
-  //     expect(
-  //       await evaluationsController.create(CREATE_EVALUATION_DTO_TEST_OBJ)
-  //     ).toEqual(EVALUATION_ONE_DTO);
-  //     expect(usersService.create).toHaveReturnedWith(EVALUATION_ONE_DTO);
-  //   });
+  describe('Create function', () => {
+    // Tests the create function with valid dto (basic positive test)
+    it('should test the create function with valid dto', async () => {
+      expect(await evaluationsController.create(EVALUATION_CREATE)).toBe(EVALUATION_DTO);
+      expect(evaluationsService.create).toHaveReturnedWith(EVALUATION_DTO);
+    });
 
-    // Tests the create function with dto that is missing email
-  //   it('should test the create function with missing email field', async () => {
-  //     jest.spyOn(usersService, 'create').mockImplementation(() => {
-  //       throw new BadRequestException();
-  //     });
-  //     expect(async () => {
-  //       await evaluationsController.create(
-  //         CREATE_EVALUATION_DTO_TEST_OBJ_WITH_MISSING_EMAIL_FIELD
-  //       );
-  //     }).rejects.toThrow(BadRequestException);
-  //   });
-  //
+
   //   // Tests the create function with dto that is missing password
   //   it('should test the create function with missing password field', async () => {
   //     jest.spyOn(usersService, 'create').mockImplementation(() => {
@@ -107,7 +94,7 @@ describe('EvaluationsController Unit Tests', () => {
   //       );
   //     }).rejects.toThrow(BadRequestException);
   //   });
-  // });
+   });
   //
   // describe('Update function', () => {
   //   // Tests the update function with valid dto (basic positive test)
