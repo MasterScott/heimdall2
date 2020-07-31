@@ -1,11 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { Evaluation } from './evaluation.model';
-import { EvaluationDto } from './dto/evaluation.dto';
-import { CreateEvaluationDto } from './dto/create-evaluation.dto';
-import { UpdateEvaluationDto } from './dto/update-evaluation.dto';
-import { EvaluationTagsService } from '../evaluation-tags/evaluation-tags.service';
-import { EvaluationTag } from '../evaluation-tags/evaluation-tag.model';
+import {Injectable, NotFoundException} from '@nestjs/common';
+import {InjectModel} from '@nestjs/sequelize';
+import {Evaluation} from './evaluation.model';
+import {EvaluationDto} from './dto/evaluation.dto';
+import {CreateEvaluationDto} from './dto/create-evaluation.dto';
+import {UpdateEvaluationDto} from './dto/update-evaluation.dto';
+import {EvaluationTagsService} from '../evaluation-tags/evaluation-tags.service';
+import {EvaluationTag} from '../evaluation-tags/evaluation-tag.model';
 
 @Injectable()
 export class EvaluationsService {
@@ -13,7 +13,7 @@ export class EvaluationsService {
     @InjectModel(Evaluation)
     private evaluationModel: typeof Evaluation,
     private evaluationTagsService: EvaluationTagsService
-  ) { }
+  ) {}
 
   async findAll(): Promise<EvaluationDto[]> {
     const evaluations = await this.evaluationModel.findAll<Evaluation>();

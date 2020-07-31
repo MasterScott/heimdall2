@@ -1,23 +1,15 @@
-EvaluationsControllerimport { NotFoundException, BadRequestException, CanActivate} from '@nestjs/common';
+import {
+  NotFoundException,
+  BadRequestException,
+  CanActivate
+} from '@nestjs/common';
 import {Test, TestingModule} from '@nestjs/testing';
 import {EvaluationsController} from './evaluations.controller';
 import {EvaluationsService} from './evaluations.service';
-import {
-  ID,
-  EVALUATION_ONE_DTO,
-  EVALUATION_USER_DTO,
-  CREATE_EVALUATION_DTO_TEST_OBJ,
-  DELETE_EVALUATION_DTO_TEST_OBJ,
-  UPDATE_EVALUATION_DTO_TEST_OBJ,
-  DELETE_EVALUATION_DTO_TEST_OBJ_WITH_MISSING_PASSWORD,
-  CREATE_EVALUATION_DTO_TEST_OBJ_WITH_MISSING_EMAIL_FIELD,
-  UPDATE_EVALUATION_DTO_WITH_MISSING_CURRENT_PASSWORD_FIELD,
-  CREATE_EVALUATION_DTO_TEST_OBJ_WITH_MISSING_PASSWORD_FIELD,
-  CREATE_EVALUATION_DTO_TEST_OBJ_WITH_MISSING_PASSWORD_CONFIRMATION_FIELD
-} from '../../test/constants/evaluations-test.constant';
 import {AbacGuard} from '../guards/abac.guard';
 import {DatabaseService} from '../database/database.service';
 import {DatabaseModule} from '../database/database.module';
+import {UsersService} from '../users/users.service';
 
 // Test suite for the EvaluationsController
 describe('EvaluationsController Unit Tests', () => {
@@ -50,7 +42,9 @@ describe('EvaluationsController Unit Tests', () => {
       .compile();
 
     usersService = module.get<UsersService>(UsersService);
-    evaluationsController = module.get<EvaluationsController>(EvaluationsController);
+    evaluationsController = module.get<EvaluationsController>(
+      EvaluationsController
+    );
     databaseService = module.get<DatabaseService>(DatabaseService);
   });
 
@@ -84,9 +78,9 @@ describe('EvaluationsController Unit Tests', () => {
   describe('Create function', () => {
     // Tests the create function with valid dto (basic positive test)
     it('should test the create function with valid dto', async () => {
-      expect(await evaluationsController.create(CREATE_EVALUATION_DTO_TEST_OBJ)).toEqual(
-        EVALUATION_ONE_DTO
-      );
+      expect(
+        await evaluationsController.create(CREATE_EVALUATION_DTO_TEST_OBJ)
+      ).toEqual(EVALUATION_ONE_DTO);
       expect(usersService.create).toHaveReturnedWith(EVALUATION_ONE_DTO);
     });
 
@@ -131,7 +125,11 @@ describe('EvaluationsController Unit Tests', () => {
     // Tests the update function with valid dto (basic positive test)
     it('should test the update function with a valid update dto', async () => {
       expect(
-        await evaluationsController.update('user', ID, UPDATE_EVALUATION_DTO_TEST_OBJ)
+        await evaluationsController.update(
+          'user',
+          ID,
+          UPDATE_EVALUATION_DTO_TEST_OBJ
+        )
       ).toEqual(EVALUATION_USER_DTO);
       expect(usersService.update).toHaveReturnedWith(EVALUATION_USER_DTO);
     });
@@ -142,7 +140,11 @@ describe('EvaluationsController Unit Tests', () => {
         throw new NotFoundException();
       });
       expect(async () => {
-        await evaluationsController.update('user', ID, UPDATE_EVALUATION_DTO_TEST_OBJ);
+        await evaluationsController.update(
+          'user',
+          ID,
+          UPDATE_EVALUATION_DTO_TEST_OBJ
+        );
       }).rejects.toThrow(NotFoundException);
     });
 
